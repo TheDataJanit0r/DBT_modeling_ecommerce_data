@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: bitburger_matched_stammdaten
+  - name: coke_matched_stammdaten
+  - name: coke_matching_stammdaten_batch_1
+  - name: coke_matching_stammdaten_batch_2
+  - name: coke_matching_stammdaten_batch_3
+  - name: coke_matching_stammdaten_batch_4
+  - name: coke_matching_stammdaten_batch_5
+  - name: coke_matching_stammdaten_batch_6
+  - name: krombacher_matched_stammdaten
+  - name: rotkaepchen_matched_stammdaten
+  - name: ccep_stammdaten_merchants
+
+  

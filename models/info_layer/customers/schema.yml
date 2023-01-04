@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: gedat_matched_jvp_classified_customers
+  - name: customer_table_horeca_children_customers 
+  - name: customer_table_horeca_children_customers_classified
+  - name: customer_hubspot_upload
+  - name: ccep_customer_export
+  - name: customer_reactivation_list_this_month
+  

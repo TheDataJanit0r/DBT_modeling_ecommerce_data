@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: gfgh_import_diff_weekly
+  - name: gfgh_import_diff_weekly_update

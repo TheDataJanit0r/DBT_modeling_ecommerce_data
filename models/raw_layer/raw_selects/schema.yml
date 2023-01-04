@@ -1,0 +1,251 @@
+version: 2
+
+sources:
+  - name: gfghdata_lambda
+    schema: prod_raw_layer
+    loader: copy_and_paste lambda 
+    loaded_at_field: _sdc_extracted_at
+    freshness:
+      warn_after: {count: 2, period: hour}
+      error_after: {count: 12, period: hour}
+    tables:
+      - name: gfgh_info
+      - name: gfgh_data
+        tests:
+          - dbt_utils.recency:
+              datepart: day
+              field: _sdc_extracted_at
+              interval: 180
+        columns:
+          - name: merchant_key
+            tests: 
+              - dbt_utils.at_least_one
+
+  - name: merchant_bases
+    schema: prod_raw_layer
+    loader: db-extraction-gfghdata (logs on kibana)
+    loaded_at_field: _sdc_extracted_at
+    tables:
+      - name: krajewski
+      - name: gvs
+      - name: ellerkamp
+      - name: seifer
+      - name: tasche
+      - name: richard
+      - name: menkestein
+      - name: cramer
+      - name: trinkkontor_tbs
+      - name: test_kollex
+      - name: rupp
+      - name: ogv_norden
+      - name: ogv_borkum
+      - name: linnepe
+      - name: hgv
+      - name: hartmann
+      - name: essig
+      - name: herzberg
+      - name: bruene
+      - name: lewandowsky
+      - name: ehlzander
+      - name: nehrmann
+      - name: gimrotenburg
+      - name: gimkorbach
+      - name: gimehringshausen
+      - name: getraenkewerk
+      - name: schallenberg
+      - name: rothaus
+      - name: wip
+      - name: ipsen
+      - name: schmitzundhergt
+      - name: koenigstein
+      - name: scharl
+      - name: schulte
+      - name: bruegging
+      - name: wsgastro
+      - name: pass
+      - name: kupfer
+      - name: keinernagel
+      - name: storch
+      - name: homann
+
+      - name: fuetterer
+      - name: knein
+      - name: gottschall
+      - name: floetzinger
+      - name: zumdiek
+      - name: geins
+      - name: janmueller
+      - name: laengert
+      - name: iversen
+      - name: cottbuser
+      - name: vogt
+      - name: koppe
+      - name: kalinowski
+      - name: schneiders_taxi
+      - name: getraenkeblitz
+      - name: reidemeister
+      - name: fisi
+      - name: becker
+      - name: welifa_sap
+      - name: johanneskraemer
+      - name: frankenbraeu
+      - name: lorse
+      - name: brinckmann
+      - name: feldscherhebel
+      - name: engelsburger
+      - name: prey
+      - name: boxheimer
+      - name: kern
+      - name: bitter
+      - name: bursundschroeder_csv
+      - name: lange
+      - name: dietrichgetraenke
+      - name: oswald
+      - name: quirin
+      - name: rietdorfer
+      - name: blum
+      - name: hubauer
+      - name: moser
+      - name: lieferamt
+      - name: dreykorn
+      - name: henselder
+      - name: petersenundsohn
+      - name: geins_regensburg
+      - name: geins_passau
+      - name: geins_hainichen
+      - name: geins_nuernberg
+      - name: hollenbeck
+      - name: zimmer
+      - name: wilhelm
+      - name: struckmann_csv
+      - name: troesch
+      - name: schmitt
+      - name: finsterwalder
+      - name: waldhoffhoexter
+      - name: sojka
+      - name: brandt
+      - name: henke
+      - name: gefromm
+      - name: broeker
+      - name: klausfuerstenberg
+      - name: hoelscher
+      - name: gross
+      - name: tabacon
+      - name: niehues
+      - name: frauendorf
+      - name: spitthoff
+      - name: glt
+      - name: schultze
+      - name: eico
+      - name: tkk_aldenhoven
+      - name: tkk_duisburg
+      - name: tkk_hilgert
+      - name: tkk_koeln
+      - name: tkk_remagen
+      - name: tkk_singhofen
+      - name: tkk_weinsheim
+      - name: tkk_wittlich
+      - name: bluemel
+      - name: oppowa
+      - name: krieger
+      - name: werner
+      - name: brakhoff
+      - name: hummert
+      - name: possemeyer
+      - name: rueckel
+      - name: schwertfeger
+      - name: nord
+      - name: hewei
+      - name: muth
+      - name: voglrieder
+      - name: klumpp
+      - name: wehmeyer
+      - name: lambert
+      - name: trendjaeger
+      - name: breisgau
+      - name: hepp
+      - name: heid
+      - name: rothe
+      - name: rausch
+      - name: heinemann
+      - name: plaum
+      - name: yasa
+      - name: kurthdueckers
+      - name: test_reidemeister
+      - name: waldhoffundvoss
+      - name: langesundsohn
+      - name: waldhoffkassel
+      - name: waldhofferfurt
+      - name: brunnenkopp
+      - name: max
+      - name: brueckner
+      - name: kirstein
+      - name: taschner
+      - name: elbtal
+      - name: gato
+      - name: umsonst
+      - name: vaubel
+      - name: biertaxi
+      - name: doerlemann
+      - name: lorsch
+      - name: heidorn
+      - name: stroehersoehne
+      - name: test_karpesdaycare
+      - name: kesten_api
+      - name: thorwarth
+      - name: getraenkecity
+      - name: braeuning
+      - name: gruenberg
+      - name: wille
+      - name: wolf
+
+
+models:
+  - name: gs1data
+  - name: gs1_matches
+  - name: kxe_pim_final_skus
+    tests:
+      - unique:
+          column_name: product_uuid
+          severity: warn
+  
+  - name: holdings
+    columns:
+      - name: merchant_key
+        tests: 
+          - not_null
+          - unique
+          
+  
+          
+  - name: merchants_active
+    columns:
+      - name: merchant_key
+        tests: 
+          - not_null
+          - unique
+  - name: merchants_new
+    columns:
+      - name: merchant_key
+        tests: 
+          - not_null
+          - unique
+  - name: merchants_on_hold
+    columns:
+      - name: merchant_key
+        tests: 
+          - not_null
+          - unique
+  - name: merchants_all
+    columns:
+      - name: merchant_key
+        tests: 
+          - not_null
+          - unique 
+  - name: merchants_to_exclude
+    columns:
+      - name: merchant_key
+        tests: 
+          - not_null
+          - unique
+

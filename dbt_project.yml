@@ -1,0 +1,72 @@
+
+# Name your package! Package names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'data_warehouse'
+version: '1.0'
+require-dbt-version: ">=1.0.0"
+config-version: 2
+# This setting configures which "profile" dbt uses for this project. Profiles contain
+# database connection information, and should be configured in the  ~/.dbt/profiles.yml file
+profile: 'default'
+
+# These configurations specify where dbt should look for different types of files.
+# The `source-paths` config, for example, states that source models can be found
+# in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analysis"] 
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets: [target, dbt_packages, logs]
+
+# You can define configurations for models in the `source-paths` directory here.
+# Using these configurations, you can enable or disable models, change how they
+# are materialized, and more!
+
+# on-run-end:
+#    # - 'grant usage on schema {{ target.schema }} to dwh_readonly'
+#    # - 'grant select on all tables in schema {{ target.schema }} to dwh_readonly'
+#    # - 'grant select on {{ this }} to dwh_readonly'
+
+# In this example config, we tell dbt to build all models in the example/ directory
+# as views (the default). These settings can be overridden in the individual model files
+# using the `{{ config(...) }}` macro.
+models:
+  data_warehouse:
+      #pre-hook: "{{ logging.log_model_start_event() }}" # possible re-enable after analyzing the current results table
+    #   post-hook:
+        #   - 'grant usage on schema {{ target.schema }} to dwh_readonly'
+        #   - 'grant select on {{ this }} to dwh_readonly'
+          #- "{{ logging.log_model_end_event() }}" # see above
+      raw_layer:
+          materialized: table
+          schema: 'raw_layer'
+          +post-hook: 'grant select on all tables in schema {{ target.schema }} to dwh_readonly'
+          akeneo:
+              materialized: table
+              +post-hook: 'grant select on all tables in schema {{ target.schema }} to dwh_readonly'
+          matching:
+           
+          raw_selects:
+              materialized: table  
+              +post-hook: 'grant select on all tables in schema {{ target.schema }} to dwh_readonly'
+        
+      info_layer:
+          materialized: table
+          schema: 'info_layer' 
+          +post-hook: 'grant select on all tables in schema {{ target.schema }} to dwh_readonly'         
+      reporting_layer:
+          materialized: table
+          schema: 'reporting_layer'
+          +post-hook: 'grant select on all tables in schema {{ target.schema }} to dwh_readonly'
+
+seeds:
+  data_warehouse:
+    quote_columns: False
+    enabled: True
+    schema: raw_layer
+    +post-hook: "grant select on {{ this }} to dwh_readonly"

@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: akeneo_gfghdata_mismatch
+  - name: all_gtins
+  - name: all_unmatched_gtins
+  - name: csvexchange_merchants
+
+
+  - name: qs_mix_packaging_sku
+  - name: qs_base
+  - name: qs_level_1_sku
+  - name: qs_level_1
+  - name: qs_level_2
+  - name: qs_lvl1_agg
+  - name : qs_final_onboarding
+  - name: qs_base_on_id
+  - name: qs_level_1_sku_on_id
+  - name: qs_level_1_on_id
+  - name: qs_level_2_on_id
+  - name: qs_lvl1_agg_on_id
+  - name: skus_to_reactivate
+  - name: kpis
+  - name: gfgh_zombies
+  - name: all_categories
+  - name: attribute_options
+  - name: missing_gfgh_id
+  - name: missing_flag
+  - name: organic_certified
+  - name: nutrient_precision_missing
+  - name: pim_classifier_base
+  - name: food_classifier_base
+  - name: gfgh_active
+  - name : new_gfgh_sku_match_dr_merchants
+  - name : new_gfgh_unmatched_dr_merchants
+  - name: gfgh_gs1_match
+  - name: gfgh_model_match
+  - name: gfgh_new_active
+  - name: gfgh_no_gtin
+  - name: gfgh_qs
+  - name: gfgh_qs_overall
+  - name: gfgh_sku_match
+  - name: gfgh_unmatched
+  - name: gfgh_gtins
+  - name: gfgh_ongoing_overview
+  - name: gfgh_duplicate_ids
+  - name: gfgh_inconsistent_qs
+  - name: gfgh_nonexisting_ids
+  - name: gfgh_duplicate_gtin_pack
+  - name: gfgh_duplicate_gtin_single
+  - name: gfgh_data_no_sku
+  - name: gfgh_data_direct_releases
+  - name: new_gfgh_active
+  - name: new_gfgh_gs1_match
+  - name: new_gfgh_model_match
+  - name: new_gfgh_new_active
+  - name: new_gfgh_no_gtin
+  - name: new_gfgh_qs
+  - name: new_gfgh_qs_overall
+  - name: new_gfgh_sku_match
+  - name: new_gfgh_unmatched
+  - name: new_gfgh_ongoing_overview
+  - name: all_gfgh_overview
+  - name: all_gfgh_kpis
+  - name: product_import 

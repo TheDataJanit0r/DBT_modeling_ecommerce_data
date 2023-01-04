@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: daily_agg_emails
+    columns:
+      - name: date_at
+        tests:
+          - not_null
+          - unique

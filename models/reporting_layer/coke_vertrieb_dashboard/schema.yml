@@ -1,0 +1,18 @@
+version: 2
+
+models:
+   -  name:  coke_dashboard_orders_with_coke_items_2022
+   -  name:  total_kollex_registrations_2022
+   -  name:  number_of_orders_with_coke_items
+   -  name:  coke_customer_list
+   -  name:  number_of_coke_orders_per_year
+   -  name:  number_of_ordered_items_kollex_customers
+   -  name:  average_number_of_items_per_basket
+   -  name:  average_number_of_basket_items_per_coke_customer
+   -  name:  average_number_of_items_per_CCEP_Customer
+   -  name:  average_number_of_items_per_customer_per_month
+   -  name:  number_of_coke_items_ordered_per_month
+   -  name:  active_customer_per_month_ccep
+   -  name:  average_number_of_postions_per_coke_customer_per_month
+   -  name:  average_number_of_postions_per_kollex_customer_per_month
+   -  name:  orders_coke

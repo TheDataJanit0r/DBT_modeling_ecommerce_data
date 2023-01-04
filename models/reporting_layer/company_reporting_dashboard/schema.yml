@@ -1,0 +1,25 @@
+version: 2
+
+models:
+    - name : active_customer_monthly
+    - name : active_customer_monthly_last_year
+    - name : orders_per_month
+    - name : registered_bitburger_customer_per_month
+    - name : registered_coke_customer_per_month
+    - name : registered_krombacher_customer_per_month
+    - name : registered_rottkaepchen_customer_per_month
+    - name : average_number_of_orders_this_year
+    - name : average_number_of_orders_last_year
+    - name : active_customer_coke_monthly
+    - name : active_customer_krombacher_monthly
+    - name : active_customer_rottkaepchen_monthly
+    - name : active_customer_bitburger_monthly
+    - name : new_ordering_coke_customers_per_month
+    - name : new_ordering_krombacher_customers_per_month
+    - name : new_ordering_bitburger_customers_per_month
+    - name : new_ordering_rotkaepchen_customers_per_month
+    - name : churn_rate_per_month
+    - name : churn_new_customer_mom
+    - name : churn_new_customer_mom_percentage
+
+

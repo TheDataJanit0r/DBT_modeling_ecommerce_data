@@ -1,0 +1,9 @@
+version: 2
+
+models:
+    - name: gms_dashboard_registered_customers_with_categorie
+    - name: gms_dashboard_kunden_kluster
+    - name: gms_dashboard_registered_customers_percentage
+    - name: gms_dashboard_kunden_kluster_lvl_2
+    - name: gms_dashboard_orders_scaled_pro_segment
+    - name: top_20_items_gms

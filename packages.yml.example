@@ -1,0 +1,5 @@
+packages:
+  - package: fishtown-analytics/dbt-event-logging
+    version: 0.1.5
+  #- package: fishtown-analytics/dbt_utils
+  #  version: 0.2.4

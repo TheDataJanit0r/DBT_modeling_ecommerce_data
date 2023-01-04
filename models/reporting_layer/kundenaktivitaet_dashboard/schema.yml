@@ -1,0 +1,5 @@
+version: 2
+
+models:
+    - name: kundenaktivitaet_dashboard_orders_per_segment_scaled
+

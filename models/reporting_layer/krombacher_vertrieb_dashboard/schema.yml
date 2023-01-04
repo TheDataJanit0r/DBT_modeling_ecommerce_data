@@ -1,0 +1,5 @@
+version: 2
+
+models:
+    - name: krombacher_customers_vertrieb_dashboard
+

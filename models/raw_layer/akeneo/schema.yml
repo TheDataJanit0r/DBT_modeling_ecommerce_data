@@ -1,0 +1,89 @@
+version: 2
+
+sources:
+  - name: akeneo
+    schema: prod_raw_layer
+    loader: db-extraction-akeneo and (two tables from lambda)
+    loaded_at_field: _sdc_extracted_at
+    freshness:
+      warn_after: {count: 2, period: hour}
+      error_after: {count: 240, period: hour}
+    tables:
+      - name: pim_catalog_product_model_association
+      - name: pim_catalog_family         
+        columns:
+          - name: id
+            tests: 
+       
+              - unique
+              - not_null
+      - name: pim_catalog_family_translation         
+        columns:
+          - name: id
+            tests: 
+             
+              - unique
+              - not_null
+      - name: pim_catalog_category         
+        columns:
+          - name: id
+            tests: 
+             
+              - unique
+              - not_null
+      - name: pim_catalog_category_translation         
+        columns:
+          - name: id
+            tests: 
+             
+              - unique
+              - not_null
+      - name: pim_catalog_category_product 
+      - name: pim_catalog_category_product_model   
+      - name: pim_catalog_attribute         
+        columns:
+          - name: id
+            tests: 
+       
+              - unique
+              - not_null
+      - name: pim_catalog_attribute_option         
+        columns:
+          - name: id
+            tests: 
+           
+              - unique
+              - not_null
+      - name: pim_catalog_attribute_option_value         
+        columns:
+          - name: id
+            tests: 
+             
+              - unique
+              - not_null  
+
+
+  - name: akeneo_lambda
+    schema: prod_raw_layer
+    loader: aws lambda extraction (bi-stitch-integrations repo; one excepton)
+    loaded_at_field: _updated_at
+    freshness:
+      warn_after: {count: 2, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: pim_catalog_product          
+        columns:
+          - name: id
+            tests: 
+              - unique
+              - not_null
+
+      - name: pim_catalog_product_model         
+        columns:
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: pim_catalog_product_unjsoned
+      - name: pim_catalog_product_model_unjsoned
+

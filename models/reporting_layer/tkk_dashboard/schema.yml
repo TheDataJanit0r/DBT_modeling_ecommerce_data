@@ -1,0 +1,8 @@
+version: 2
+
+models:
+    - name: tkk_dashboard_registered_customers_with_categorie
+    - name: tkk_dashboard_kunden_kluster
+    - name: tkk_dashboard_registered_customers_percentage
+    - name: tkk_dashboard_kunden_kluster_lvl_2
+    - name: top_20_items_tkk

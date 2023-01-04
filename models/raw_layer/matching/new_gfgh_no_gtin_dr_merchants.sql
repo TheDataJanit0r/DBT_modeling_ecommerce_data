@@ -1,0 +1,1 @@
+{{ ongoing_no_gtin_dr_merchants(merchants_dr()) }}

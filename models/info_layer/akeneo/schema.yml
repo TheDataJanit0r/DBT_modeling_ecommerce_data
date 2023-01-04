@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: all_gs1_items_categories
+
+  - name: dwd_stations
+    description: "Table with start and end recording dates of german weather stations from DWD (Deutscher Wetterdienst). Soon to be used for forecasting"
+  
+  - name: sku_category_fact
+    description:
+      "Logic to map the PIM family and category dimensions to a SKU. The family is the most general level and mapped
+      to a product directly. A category can either be mapped via a Product Model or a Product directly. A product can be mapped to several categories,
+      of which only one is a root category (i.e. category 'Beer' with parent_id = 1 as root, category 'Pilsener beer' as another category with a parent-child
+      relationship to 'Beer')."
+    columns:
+      - name: sku
+        tests:
+          - not_null
+          - unique:
+              severity: warn
+
+  - name: sku_deposit_fact
+    description:
+      "Logic to join SKUs and their quantities and deposit values for bottles as well as packaging.
+      Metadate is stored in `pim_catalog_attribute_option` and extracted by joining on the id of the given property
+      as well as an alpha-numeric string unique to each SKU."

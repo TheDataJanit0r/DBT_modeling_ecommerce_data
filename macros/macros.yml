@@ -1,0 +1,34 @@
+version: 2
+
+macros:
+  - name: index
+    description: Index macro to create a (non unique) index on a column
+  - name: merchant_base
+  - name: merchant_base_by_name
+  - name: merchant_enabled_with_sku
+  - name: merchant_qs
+  - name: merchants_active
+  - name: merchants_active_test
+  - name: merchants_all
+  - name: merchants_new
+  - name: merchants_on_hold
+  - name: merchants_to_exclude
+  - name: ongoing_active
+  - name: ongoing_duplicates
+  - name: ongoing_gs1match
+  - name: ongoing_model_match
+  - name: ongoing_new_active
+  - name: ongoing_no_gtin
+  - name: ongoing_nonexisting
+  - name: ongoing_overview
+  - name: ongoing_qs
+  - name: ongoing_sku_match
+  - name: ongoing_unmatched
+  - name: overall_qs
+  - name: merchants_dr
+  - name: ongoing_gs1_match_dr_merchants
+  - name: ongoing_no_gtin_dr_merchants
+  - name: ongoing_sku_match_dr_merchants
+  - name: ongoing_unmatched_dr_merchants
+  - name: ongoing_model_match_dr_merchants
+  - name: ongoing_no_gtin_v2

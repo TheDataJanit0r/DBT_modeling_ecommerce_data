@@ -1,0 +1,9 @@
+SELECT
+    merchant_key
+FROM
+    prod_raw_layer.merchants_new
+UNION
+SELECT
+    merchant_key
+FROM
+    prod_raw_layer.merchants_active
