@@ -1,4 +1,4 @@
-### dbt models for kollex Data Warehouse
+### dbt models for ecommerce
 
 ---
 - [What is dbt](https://dbt.readme.io/docs/overview)?
